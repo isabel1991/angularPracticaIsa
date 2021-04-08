@@ -1,0 +1,28 @@
+
+<!-- <div class="container">
+
+    <h1 style="color: #303F9F;"> 
+       <span class="material-icons" style="font-size: 50px; vertical-align:text-bottom">
+          face
+       </span>
+       Clientes Listado</h1>
+    <hr class="my-4">
+    <div class="container" name="cargaCat">
+        <div class="row">       
+           <div class="card" style="width: 16rem;" *ngFor="let cli of resultados">
+            <div class="card-body">
+               <p><b>Cliente:</b> {{cli.contactName}}</p>
+               <br>
+               <p> <b>Compañía:</b> {{cli.companyName}}</p>
+               <a [routerLink]="['/customer', cli.id]"> Ver Nombre de Contacto </a>
+            </div>
+           </div>
+        </div>
+        
+    </div>
+    </div> -->
+<div class="row">
+<app-customer class="col-3" *ngFor="let cliente of resultados" [cliente]="cliente" >
+
+</app-customer>
+</div>

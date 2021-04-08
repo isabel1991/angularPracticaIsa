@@ -1,0 +1,24 @@
+
+
+  <div *ngIf="loading">
+
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+  <div *ngIf="!loading" >    
+     <div class="container" >
+            <div class="card" style="width: 24rem; border:1px solid blueviolet;">
+             <div class="card-body">
+                <p><b>Cliente:</b> {{cliente.contactName}}</p>
+                
+                <p> <b>Compañía:</b> {{cliente.companyName}}</p> 
+                <button pButton pRipple type="button" label="Primary" class="p-button-raised">Ver Cliente</button>
+                <br><br>
+                <button pButton pRipple type="button" label="Primary" class="p-button-raised"> Editar Cliente</button>
+             </div>
+            </div>
+      
+         
+     </div>
+     </div> 
+
+     
