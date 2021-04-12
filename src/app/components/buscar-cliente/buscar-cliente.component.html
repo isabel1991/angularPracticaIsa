@@ -7,35 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clientes Buscador</title>
   </head>
+
   <body>
+    <!-- Cabecera -->
     <div class="container">
+      <h1 style="color: #303F9F;">
+        <i class="pi pi-user" style="font-size: 2rem"></i>
+       Buscar Cliente</h1>
+      <hr class="my-4">
+      </div>
+    <div class="container">
+
       <!-- Bucador -->
-     <div> 
+     <div>
        <form (ngSubmit)="busqueda()" >
          <input required name="query" [(ngModel)]="query"
-         placeholder="Introduzca nombre del cliente" class="form-group col-3"/>
-         <button type="submit" class="btn btn-primary">Buscar</button>
-         
+         placeholder="Introduzca nombre del cliente" class="form-control col-4"/>
+         <button type="submit" class="btn btn-primary my-2">Buscar</button>
        </form>
        <br>
        <!-- Render tarjetas / Resultados -->
-       
-       <div class="row" *ngIf="!exito">
-         <div *ngFor="let customer of resultados" class="card " style="width: 16rem;">
+       <div class="container" *ngIf="loading">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+       <div *ngIf="!loading">
+       <div *ngIf="!error">
+       <div class="row">
+         <div *ngFor="let customer of resultados" class="card " style="width: 20rem;">
            <div class="card-body" >
            <p><b>Nombre:</b> {{ customer.contactName}}</p>
            <p><b>Compañía:</b> {{ customer.companyName }}</p>
-           <a [routerLink]="['/customer', customer.id]">Ver Nombre de Contacto</a>
          </div>
          </div>
        </div>
-       <div class="row" *ngIf="exito">
-         <h2>No exite dicho cliente</h2>
+      </div>
+       <div class="row" *ngIf="error">
+        <p-message severity="error" text="No existe dicho cliente, por favor busque de nuevo"></p-message>
        </div>
      </div>
-   </div>  
+   </div>
+  </div>
   </body>
   </html>
-  
+
 
 

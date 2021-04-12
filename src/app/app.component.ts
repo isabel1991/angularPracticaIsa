@@ -21,18 +21,13 @@ export class AppComponent {
       icon: 'pi pi-fw pi-search',
       routerLink: 'buscar',
     },
-    
+
     {
       label: 'Nuevo',
       icon: 'pi pi-fw pi-user-plus',
       routerLink: 'crear',
     },
-    
-    // {
-    //   label: 'Editar',
-    //   icon: 'pi pi-fw pi-user-edit',
-    //   routerLink: 'editar'
-    // },
+
     {
       label: '¿Quiénes somos?',
       icon: 'pi pi-fw pi-info-circle',

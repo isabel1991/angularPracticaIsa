@@ -22,12 +22,26 @@ export class ClientesServiceService {
   }
 
   async getAllCustomers(): Promise<Client[]>{
-    return await this.http.get<Client[]>(environment.clientesApi).toPromise();
-    
+    return await this.http.get<Client[]>(environment.clientesApi+'/customers').toPromise();
+
+  }
+
+  async getCustomerById(id:string): Promise<Client>{
+    return await this.http
+    .get<Client>(environment.clientesApi+'/customers/'+id)
+    .toPromise();
+  }
+
+  async editCustomer(cliente:Client): Promise<Client>{
+
+    return await this.http
+    .patch<Client>(environment.clientesApi+'/customers/'+cliente.id, cliente)
+    .toPromise();
+
   }
 
   async getCustomerByName(contactname: string):Promise<Client[]>{
-    let res= await this.http.get<Client[]>(environment.clientesApi+'/?contactName='+contactname).toPromise();
+    let res= await this.http.get<Client[]>(environment.clientesApi+'/customers/?contactName='+contactname).toPromise();
     return res;
  }
 
@@ -36,12 +50,16 @@ export class ClientesServiceService {
     return res;
   }
 
+  async deleteCust(id:string){
+    return await this.http.delete(environment.clientesApi+'/customers/'+id).toPromise();
+  }
+
 
 
   async checkStatus() {
     let res;
     try {
-      res = await this.http.get(environment.clientesApi).toPromise();
+      res = await this.http.get(environment.clientesApi+'/customers').toPromise();
     } catch (error) {
       // console.warn(error)
       res = {

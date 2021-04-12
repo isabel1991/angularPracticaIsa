@@ -1,24 +1,34 @@
 
+     <!-- Cabecera -->
+     <div class="container" [hidden]="!hiddenViewClientButton" >
+      <h1 style="color: #303F9F;">
+        <i class="pi pi-user" style="font-size: 2rem"></i>
+       Cliente {{cliente.contactName}}</h1>
+      <hr class="my-4">
+      </div>
 
   <div *ngIf="loading">
-
     <p-progressSpinner></p-progressSpinner>
   </div>
-  <div *ngIf="!loading" >    
-     <div class="container" >
-            <div class="card" style="width: 24rem; border:1px solid blueviolet;">
-             <div class="card-body">
-                <p><b>Cliente:</b> {{cliente.contactName}}</p>
-                
-                <p> <b>Compañía:</b> {{cliente.companyName}}</p> 
-                <button pButton pRipple type="button" label="Primary" class="p-button-raised">Ver Cliente</button>
-                <br><br>
-                <button pButton pRipple type="button" label="Primary" class="p-button-raised"> Editar Cliente</button>
-             </div>
-            </div>
-      
-         
-     </div>
-     </div> 
 
-     
+  <div class="container" *ngIf="!loading" >
+     <div class="container mx-2" >
+       <div class="row ">
+            <div class="card mx-1" style="width: 22em; height: 18em;">
+             <div class="card-body mx-1" style="width: 20em; height: 16em; align-items: center;">
+                <p><b>Cliente:</b> {{cliente.contactName}}</p>
+                <p> <b>Compañía:</b> {{cliente.companyName}}</p>
+                <p [hidden]="!hiddenViewClientButton"><b>Ciudad:</b> {{cliente.address.city}}</p>
+                <p [hidden]="!hiddenViewClientButton"><b>Calle:</b> {{cliente.address.street}}</p>
+                <p [hidden]="!hiddenViewClientButton"><b>Teléfono:</b> {{cliente.address.phone}}</p>
+                <a [hidden]="!hiddenViewClientButton" [routerLink]="['/']"><button style="color: whitesmoke; background-color:rgb(70, 70, 134);" pButton pRipple type="button" label="Volver" class="p-button-raised"></button></a>
+                <a [hidden]="hiddenViewClientButton" [routerLink]="['/customers/'+ cliente.id]"><button style="cursor: help; color: whitesmoke; background-color:rgb(70, 70, 134);" pButton pRipple type="button" label="Ver Cliente" class="p-button-raised"></button></a>
+                <br><br>
+                <a [hidden]="hiddenViewClientButton" [routerLink]="['editCliente', cliente.id]"><button style="color: whitesmoke; background-color: rgb(70, 70, 134);" pButton pRipple type="button" label="Editar Cliente" class="p-button-raised"></button></a>
+                
+              </div>
+            </div>
+          </div>
+     </div>
+     </div>
+

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Client } from 'src/app/interfaces/client';
 import { ClientesServiceService } from 'src/app/services/clientes-service.service';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-crear-cliente',
@@ -15,12 +16,14 @@ export class CrearClienteComponent implements OnInit {
   companyName:string="";
   cliente: Client;
   loading = true;
+  mensaje=false;
   constructor(
     private ClienteServiceService: ClientesServiceService,
-    private formBuiler: FormBuilder
-  ) { 
+    private formBuiler: FormBuilder,
+    private messageService: MessageService
+  ) {
 
- 
+
   }
 
   async ngOnInit(): Promise<void> {
@@ -30,7 +33,7 @@ export class CrearClienteComponent implements OnInit {
       {
         name: ['', [Validators.required, Validators.minLength(5)]],
         companyName: ['', [Validators.required, Validators.minLength(6)]]
-        
+
       }
     );
 
@@ -43,13 +46,16 @@ export class CrearClienteComponent implements OnInit {
       companyName: this.formulario.get('companyName').value
     }
     console.log( this.formulario);
-   
+
     console.log(clien);
     await this.ClienteServiceService.createCustomer(clien);
-
-   window.location.reload();//recarga componente
+    this.resultados = await this.ClienteServiceService.getAllCustomers();
+    this.formulario.reset();
+    this.mensaje=true;
+    this.messageService.add({severity:'success', summary:'Cliente creado con éxito'});
+  //  window.location.reload();//recarga componente
   }
 
- 
+
 
 }

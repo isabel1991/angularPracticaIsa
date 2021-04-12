@@ -34,6 +34,7 @@ import { BuscarClienteComponent } from './components/buscar-cliente/buscar-clien
 import { CrearClienteComponent } from './components/crear-cliente/crear-cliente.component';
 import { CustomerComponent } from './components/buscar-cliente/customer/customer.component';
 import { AboutComponent } from './components/about/about.component';
+import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { AboutComponent } from './components/about/about.component';
     BuscarClienteComponent,
     CrearClienteComponent,
     CustomerComponent,
-    AboutComponent
+    AboutComponent,
+    EditCustomerComponent
   ],
   imports: [
     BrowserModule,
