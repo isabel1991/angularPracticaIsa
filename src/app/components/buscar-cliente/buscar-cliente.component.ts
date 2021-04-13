@@ -1,4 +1,6 @@
+import { isGeneratedFile } from '@angular/compiler/src/aot/util';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Client } from 'src/app/interfaces/client';
 import { ClientesServiceService } from 'src/app/services/clientes-service.service';
 
@@ -11,35 +13,41 @@ import { ClientesServiceService } from 'src/app/services/clientes-service.servic
 })
 export class BuscarClienteComponent implements OnInit {
 
- 
+
    query: string;
    resultados: Client[];
-   exito=false;
+  loading=true;
+   error= false;
+   hiddenViewClientButton=false;
 
-  constructor(private clienteService: ClientesServiceService) { }
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private clienteService: ClientesServiceService) { }
 
  async ngOnInit(): Promise<void>{
 
   this.resultados = await this.clienteService.getAllCustomers();
-   
+  this.loading=false;
   }
 
   async busqueda(){
-    
+
       this.resultados = await this.clienteService.getCustomerByName(this.query);
+      this.hiddenViewClientButton=true;
+      this.error=false;
+      if(this.resultados.length==0) {
+        this.resultados = await this.clienteService.getAllCustomers();
+        if(this.query=='' || this.query==null){
+          this.hiddenViewClientButton=false;
+          this.error=false;
 
-      if(this.resultados){     
-        
-        this.exito=false;
-
-      }else {
-
-        this.exito=true;
-        
+        }else{
+          this.error=true;
+        }
       }
 
       console.warn(this.resultados);
-    
+
   }
 
 

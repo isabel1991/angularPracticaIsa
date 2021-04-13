@@ -3,13 +3,13 @@ export interface Client {
     companyName: string;
     contactName: string;
     contactTitle?: string;
-    adress?: {
-        street?:string;
-        city: string;
-        region: string;
-        postalCode: string;
-        country: string;
-        phone: string;
-    };
+    address?: [
+        street?:string,
+        city?: string,
+        region?: string,
+        postalCode?: string,
+        country?: string,
+        phone?: string,
+    ];
 
 }

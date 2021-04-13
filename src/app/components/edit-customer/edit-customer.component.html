@@ -1,0 +1,33 @@
+
+
+
+ <div class="container">
+  <h1 style="color: #303F9F;">
+    <i class="pi pi-user-edit" style="font-size: 2rem"></i>
+    Editar Cliente</h1>
+  <hr class="my-4">
+  <div>
+
+<div class="container" *ngIf="!loading">
+
+  <form>
+    <div class="col-7">
+      <label for="contactName" style="color: navy;"><b>Nombre del Cliente</b></label>
+      <input name="contactName" type="text" class="form-control" style="border-color: blue;" [(ngModel)]="cliente.contactName" pInputText>
+
+    </div>
+  <br><br>
+    <div class="col-7">
+      <label for="companyName" style="color: navy;"><b>Nombre de la Compañía</b></label>
+      <input name="companyName" type="text" class="form-control" style="border-color: blue;" [(ngModel)]="cliente.companyName" pInputText>
+
+    </div>
+    <br>
+
+  </form>
+  <a [routerLink]="['/']" ><button (click)="submit()"  class="btn btn-primary"  type="submit">Guardar Cambios</button></a>
+  </div>
+  <p-toast></p-toast>
+  <div *ngIf="loading">
+    <p-progressSpinner></p-progressSpinner>
+  </div>

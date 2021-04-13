@@ -1,0 +1,48 @@
+<script>
+  var working = false;
+  $('.login').on('submit', function (e) {
+    e.preventDefault();
+    if (working) return;
+    working = true;
+    var $this = $(this),
+      $state = $this.find('button > .state');
+    $this.addClass('loading');
+    $state.html('Authenticating');
+    setTimeout(function () {
+      $this.addClass('ok');
+      $state.html('Welcome back!');
+      setTimeout(function () {
+        $state.html('Log in');
+        $this.removeClass('ok loading');
+        working = false;
+      }, 4000);
+    }, 3000);
+  });
+</script>
+
+<div class="wrapper">
+  <form class="login">
+    <p class="title">Log in</p>
+    <input type="text" placeholder="Username" autofocus />
+    <i class="fa fa-user"></i>
+    <input type="password" placeholder="Password" />
+    <i class="fa fa-key"></i>
+    <a href="#">Forgot your password?</a>
+    <button>
+      <i class="spinner"></i>
+      <span class="state">Log in</span>
+    </button>
+  </form>
+  <footer>
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Isa Jaime Atienza:
+      <a class="text-white"
+        href="https://portafoliodeisabeljaime.blogspot.com/2020/12/aplicacion-ionic-con-conexion-al.html">Blog</a>
+    </div>
+
+
+    <!-- Copyright -->
+  </footer>
+
+</div>

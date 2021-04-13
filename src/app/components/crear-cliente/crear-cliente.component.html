@@ -1,9 +1,14 @@
 
       <div class="container">
-      <h1 style="color: #303F9F;"> 
+      <h1 style="color: #303F9F;">
         <i class="pi pi-user-plus" style="font-size: 2rem"></i>
         Nuevo Cliente</h1>
       <hr class="my-4">
+
+      <div *ngIf="loading">
+
+        <p-progressSpinner></p-progressSpinner>
+      </div>
 
       <div>
       <form *ngIf="!loading" [formGroup]="formulario" (ngSubmit)="createCl()">
@@ -11,33 +16,36 @@
           <label  for="name"> Nombre: </label>
           <input class="form-control" type="text" formControlName="name" name="name"  placeholder="Introduzca Nombre">
           <div *ngIf="formulario.get('name').errors" class="my-2">
-            <p *ngIf="formulario.get('name').errors['required']" class="" style="color: red;"> Este campo es necesario</p>    
-            <p *ngIf="formulario.get('name').errors['minlength']" class="" style="color: red;"> Mínimo 5 letras</p>               
+            <p *ngIf="formulario.get('name').errors['required']" class="" style="color: rgb(148, 10, 10);"> Este campo es necesario</p>
+            <p *ngIf="formulario.get('name').errors['minlength']" class="" style="color: rgb(148, 10, 10);"> Mínimo 5 letras</p>
         </div>
         </div>
         <div class="col-7">
           <label for="description">Empresa: </label>
           <input class="form-control"  type="text" formControlName="companyName"  name="companyName" placeholder="Introduzca Empresa">
           <div *ngIf="formulario.get('companyName').errors" class="my-2">
-            <p *ngIf="formulario.get('companyName').errors['required']" class="" style="color: red;"> Este campo es necesario</p>    
-            <p *ngIf="formulario.get('companyName').errors['minlength']" class="" style="color: red;"> Mínimo 6 letras</p>          
+            <p *ngIf="formulario.get('companyName').errors['required']" class="" style="color: rgb(148, 10, 10);"> Este campo es necesario</p>
+            <p *ngIf="formulario.get('companyName').errors['minlength']" class="" style="color: rgb(148, 10, 10);"> Mínimo 6 letras</p>
         </div>
         </div>
-      <br>
+
       <button  [disabled]="formulario.status !== 'VALID'" class="btn btn-primary" type="submit"> Crear</button>
       </form>
+
+        <p-toast></p-toast>
+
 
     </div>
       <br>
        <!-- ------ LISTADO ---------------------------------------------------------------------------------- -->
-      <h1 style="color: #303F9F;"> 
+      <h1 style="color: #303F9F;">
         <span class="material-icons" style="font-size: 50px; vertical-align:text-bottom">
            face
         </span>
         Clientes Listado</h1>
      <hr class="my-4">
      <div class="container" name="cargaCat">
-         <div class="row">       
+         <div class="row">
             <div class="card" style="width: 16rem;" *ngFor="let cli of resultados">
              <div class="card-body">
                 <p><b>Cliente:</b> {{cli.contactName}}</p>
@@ -46,6 +54,6 @@
              </div>
             </div>
          </div>
-         
+
      </div>
 </div>

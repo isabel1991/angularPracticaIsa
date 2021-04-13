@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { RouteReuseStrategy } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Client } from 'src/app/interfaces/client';
 import { ClientesServiceService } from 'src/app/services/clientes-service.service';
@@ -10,28 +11,33 @@ import { ClientesServiceService } from 'src/app/services/clientes-service.servic
 })
 export class ListadoClientesComponent implements OnInit {
 
+  loading=true;
   resultados: Client[];
- 
   
+
   constructor(
     private ClientesService : ClientesServiceService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    
     ) { }
 
 
   async ngOnInit(): Promise<void> {
     this.resultados = await this.ClientesService.getAllCustomers();
     const status: any = await this.ClientesService.checkStatus();
+
     if (status.status != 'ok') {
       this.messageService.add({
         severity: 'error',
         detail: status.message,
       });
+      this.loading=false;
       //console.error('Something went wrong');
     }
-    
+
   }
 
- 
+  
+
 
 }

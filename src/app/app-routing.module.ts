@@ -4,7 +4,9 @@ import { AboutComponent } from './components/about/about.component';
 import { BuscarClienteComponent } from './components/buscar-cliente/buscar-cliente.component';
 import { CustomerComponent } from './components/buscar-cliente/customer/customer.component';
 import { CrearClienteComponent } from './components/crear-cliente/crear-cliente.component';
+import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
 import { ListadoClientesComponent } from './components/listado-clientes/listado-clientes.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -20,8 +22,13 @@ const routes: Routes = [
   },
 
   {
-    path: 'customer/:id',
+    path: 'customers/:id',
     component: CustomerComponent
+  },
+
+  {
+    path: 'editCliente/:id',
+    component: EditCustomerComponent
   },
 
 
@@ -31,10 +38,16 @@ const routes: Routes = [
   },
 
   {
+    path:'login',
+    component: LoginComponent
+  },
+
+  {
     path:'about',
     component: AboutComponent
   }
- 
+
+
 ];
 
 @NgModule({

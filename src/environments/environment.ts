@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  clientesApi: 'https://northwind.now.sh/api/customers'
+  clientesApi: 'https://northwind.now.sh/api'
 };
 
 /*
