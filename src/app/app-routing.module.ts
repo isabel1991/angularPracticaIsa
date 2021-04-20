@@ -6,13 +6,20 @@ import { CustomerComponent } from './components/buscar-cliente/customer/customer
 import { CrearClienteComponent } from './components/crear-cliente/crear-cliente.component';
 import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
 import { ListadoClientesComponent } from './components/listado-clientes/listado-clientes.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: ListadoClientesComponent
+  // },
+
   {
     path: '',
-    component: ListadoClientesComponent
+    component: ListadoClientesComponent,
+    pathMatch: 'full'
   },
 
   {
@@ -34,6 +41,11 @@ const routes: Routes = [
   {
     path:'crear',
     component: CrearClienteComponent
+  },
+
+  {
+    path:'login',
+    component: LoginComponent
   },
 
   {

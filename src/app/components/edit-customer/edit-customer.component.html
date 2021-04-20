@@ -9,23 +9,69 @@
   <div>
 
 <div class="container" *ngIf="!loading">
-
-  <form>
+  <h2 style="text-align: justify;">Datos</h2>
+  <form style="border: 1px solid grey;">
     <div class="col-7">
-      <label for="contactName" style="color: navy;"><b>Nombre del Cliente</b></label>
-      <input name="contactName" type="text" class="form-control" style="border-color: blue;" [(ngModel)]="cliente.contactName" pInputText>
+      <label for="contactName" >Nombre del Cliente</label>
+      <input name="contactName" type="text" class="form-control" style="border-color: grey;" [(ngModel)]="cliente.contactName" pInputText>
+      <small id="emailHelp" class="form-text text-muted">Introduzca el nombre del cliente.</small>
+    </div>
+
+    <div class="col-7">
+      <label for="companyName" >Nombre de la Compañía</label>
+      <input name="companyName" type="text" class="form-control" style="border-color: grey;" [(ngModel)]="cliente.companyName" pInputText>
+      <small id="emailHelp" class="form-text text-muted">Nombre de la compañía en la que trabaja.</small>
+    </div>
+
+    <div class="col-7">
+      <label for="contactTitle">Título</label>
+      <input name="contactTitle" type="text" class="form-control" style="border-color: grey;" [(ngModel)]="cliente.contactTitle" pInputText>
+      <small id="emailHelp" class="form-text text-muted">Cargo que ocupa en la empresa.</small>
+    </div>
+
+    <label for="dire" style="margin-left: 20px; margin-top: 4px;" >Dirección del cliente</label>
+    <div class="col-7"  id="dire" name="dire" style="border: 1px solid rgb(163, 162, 162); margin-left: 16px; padding: 4px; ">
+    <div class="col-7">
+      <label for="address.street">Calle</label>
+      <input name="address.street" type="text" class="form-control" style="border-color: grey;" [(ngModel)]="cliente.address.street" pInputText>
+    </div>
+
+
+    <div class="col-7">
+      <label for="address.city" >Ciudad</label>
+      <input name="address.city" type="text" class="form-control" style="border-color: grey;" [(ngModel)]="cliente.address.city" pInputText>
+    </div>
+
+    <div class="col-7">
+      <label for="address.region" >Region</label>
+      <input name="address.region" type="text" class="form-control" style="border-color: grey;" [(ngModel)]="cliente.address.region" pInputText>
+    </div>
+
+    <div class="col-7">
+      <label for="address.postalCode" >Código Postal</label>
+      <input name="address.postalCode" type="text" class="form-control" style="border-color: grey;" [(ngModel)]="cliente.address.postalCode" pInputText>
+    </div>
+
+    <div class="col-7">
+      <label for="address.country">País</label>
+      <input name="address.country" type="text" class="form-control" style="border-color: grey;" [(ngModel)]="cliente.address.country" pInputText>
 
     </div>
-  <br><br>
-    <div class="col-7">
-      <label for="companyName" style="color: navy;"><b>Nombre de la Compañía</b></label>
-      <input name="companyName" type="text" class="form-control" style="border-color: blue;" [(ngModel)]="cliente.companyName" pInputText>
+  </div>
 
+    <div class="col-7">
+      <label for="address.phone">Teléfono </label>
+      <input name="address.phone" type="text" class="form-control" style="border-color: grey;" [(ngModel)]="cliente.address.phone" pInputText>
+      <small id="emailHelp" class="form-text text-muted">Indique un teléfono de contacto.</small>
     </div>
     <br>
 
-  </form>
-  <a [routerLink]="['/']" ><button (click)="submit()"  class="btn btn-primary"  type="submit">Guardar Cambios</button></a>
+  </form> <br>
+
+    <!-- Botones  -->
+  <button  (click)="goBack()" class="btn btn-secondary mx-2"  type="submit"> Cancelar </button>
+  <button (click)="submit()"  class="btn btn-primary"  type="submit">Guardar Cambios</button>
+
   </div>
   <p-toast></p-toast>
   <div *ngIf="loading">

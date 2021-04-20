@@ -6,18 +6,17 @@ import { ClientesServiceService } from 'src/app/services/clientes-service.servic
 @Component({
   selector: 'app-listado-clientes',
   templateUrl: './listado-clientes.component.html',
-  styleUrls: ['./listado-clientes.component.scss']
+  styleUrls: ['./listado-clientes.component.scss'],
 })
 export class ListadoClientesComponent implements OnInit {
-
-  loading=true;
+  loading = true;
   resultados: Client[];
 
-
   constructor(
-    private ClientesService : ClientesServiceService,
+    private ClientesService: ClientesServiceService,
     private messageService: MessageService
-    ) { }
+  ) {}
+
 
 
   async ngOnInit(): Promise<void> {
@@ -29,14 +28,8 @@ export class ListadoClientesComponent implements OnInit {
         severity: 'error',
         detail: status.message,
       });
-      this.loading=false;
+      this.loading = false;
       //console.error('Something went wrong');
     }
-
-
-
   }
-
-
-
 }

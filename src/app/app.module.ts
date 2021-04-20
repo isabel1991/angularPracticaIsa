@@ -24,9 +24,11 @@ import { ToastModule } from 'primeng/toast';
 
 //Para botones
 import {ButtonModule} from 'primeng/button';
+import {MatButtonModule} from '@angular/material/button';
 
 //Spinner
-import { ProgressSpinnerModule } from 'primeng/progressspinner'; 
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SpinnersAngularModule } from 'spinners-angular';
 
 //Componentes
 import { ListadoClientesComponent } from './components/listado-clientes/listado-clientes.component';
@@ -35,6 +37,9 @@ import { CrearClienteComponent } from './components/crear-cliente/crear-cliente.
 import { CustomerComponent } from './components/buscar-cliente/customer/customer.component';
 import { AboutComponent } from './components/about/about.component';
 import { EditCustomerComponent } from './components/edit-customer/edit-customer.component';
+import { LoginComponent } from './components/login/login.component';
+
+
 
 
 @NgModule({
@@ -45,13 +50,18 @@ import { EditCustomerComponent } from './components/edit-customer/edit-customer.
     CrearClienteComponent,
     CustomerComponent,
     AboutComponent,
-    EditCustomerComponent
+    EditCustomerComponent,
+    EditCustomerComponent,
+    LoginComponent
+
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     CardModule,
-    FormsModule, 
+    MatButtonModule,
+    FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     MenubarModule,
@@ -61,8 +71,11 @@ import { EditCustomerComponent } from './components/edit-customer/edit-customer.
     ToastModule,
     FormsModule,
     ButtonModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    SpinnersAngularModule,
+
   ],
+  exports:[MatButtonModule],
   providers: [
     MessageService
   ],

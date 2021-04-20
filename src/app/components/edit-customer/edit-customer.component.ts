@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/interfaces/client';
 import { ClientesServiceService } from 'src/app/services/clientes-service.service';
 import {MessageService} from 'primeng/api';
+
+
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-customer',
@@ -17,8 +20,11 @@ export class EditCustomerComponent implements OnInit {
   constructor(
     private activateRoute: ActivatedRoute,
     private clienteService: ClientesServiceService,
+    private router: Router,
+    private location: Location,
     private messageService: MessageService
   ) { }
+
 
   async ngOnInit(): Promise<void> {
     this.cliente = await this.clienteService.getCustomerById
@@ -29,8 +35,14 @@ export class EditCustomerComponent implements OnInit {
 
   async submit(): Promise<void>{
     console.log(await this.clienteService.editCustomer(this.cliente));
-    
+
     this.messageService.add({severity:'success', summary:'Cliente modificado con éxito'});
+    this.router.navigate(['/']);
+
+  }
+
+  public goBack(): void {
+    this.location.back();
   }
 
 }

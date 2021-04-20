@@ -50,8 +50,14 @@ export class ClientesServiceService {
     return res;
   }
 
+
   async deleteCust(id:string){
     return await this.http.delete(environment.clientesApi+'/customers/'+id).toPromise();
+  }
+
+
+  async deleteCustomer(id: string){
+    await this.http.delete(environment.clientesApi+"/customers/"+id).toPromise();
   }
 
 

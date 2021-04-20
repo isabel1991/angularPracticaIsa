@@ -9,11 +9,17 @@
           </span> Cartera de Clientes</h1>
         <hr class="my-5" style="border-color: rgb(202, 202, 200)">
         <p class="lead" style="font-size: 24px;">Consultar, Editar y Crear Clientes</p>
-        <p-menubar [model]="items"><p-button label="Messages" icon="pi pi-users" styleClass="p-button-info" badge="204" badgeClass="p-badge-danger"></p-button></p-menubar>
+        <p-menubar [model]="items">
+          <ng-template pTemplate="start">
+            <img src="assets/images/logo.jpg" height="40" class="p-mr-2">
+        </ng-template>
+
+          <p-button label="Messages" icon="pi pi-users" styleClass="p-button-info" badge="204" badgeClass="p-badge-danger"></p-button></p-menubar>
+
       </div>
     </div>
 
-
+ 
 
 <!-- <app-crear-cliente></app-crear-cliente> -->
 <!-- <p-toast ></p-toast>>  Buscar los ngIf aqui -->

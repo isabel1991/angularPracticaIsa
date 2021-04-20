@@ -9,12 +9,18 @@
   </div>
     <div class="container" *ngIf="loading">
 
-      <p-progressSpinner></p-progressSpinner>
+      <sa-spinner-dotted [size]="50" [thickness]="100" [speed]="100" color="rgba(64, 172, 57, 1)" ></sa-spinner-dotted>
+
+      <br>
+      <sa-spinner-infinity [size]="50" [thickness]="100" [speed]="100" color="rgba(64, 172, 57, 1)" secondaryColor="rgba(24, 24, 24, 0.1)" >
+
+      </sa-spinner-infinity>
     </div>
-  
+
   <div class="container"*ngIf="!loading">
   <div class="row">
   <app-customer class="col-4" *ngFor="let cliente of resultados" [cliente]="cliente" >
+
 
   </app-customer>
   </div>

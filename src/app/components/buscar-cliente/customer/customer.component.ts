@@ -1,7 +1,11 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Client } from 'src/app/interfaces/client';
 import { ClientesServiceService } from 'src/app/services/clientes-service.service';
+
+
+
 
 
 
@@ -14,15 +18,24 @@ export class CustomerComponent implements OnInit {
 
   loading=true;
  @Input() cliente: Client;
-hiddenViewClientButton=false;
+
+  hiddenViewClientButton=false;
+  location: Location;
+
+
 
 
   constructor(
     private activateRoute: ActivatedRoute,
-    private clienteService : ClientesServiceService
-  ) { }
+    private clienteService : ClientesServiceService  ) { }
+
+  async ngOnChanges(): Promise<void>{
+    this.cliente[0] = await this.clienteService.getAllCustomers();
+  }
+
 
  async ngOnInit(): Promise<void> {
+
 
     console.log(this.cliente);
     if(this.cliente){
@@ -37,6 +50,14 @@ hiddenViewClientButton=false;
 
 
    }
+
+   async deleteCustomer(id:string){
+    await this.clienteService.deleteCustomer(id);
+
+  }
+
+
+
 
 
 }

@@ -37,6 +37,15 @@
            <div class="card-body" >
            <p><b>Nombre:</b> {{ customer.contactName}}</p>
            <p><b>Compañía:</b> {{ customer.companyName }}</p>
+
+
+           <p [hidden]="!hiddenViewClientButton"><b>Calle:</b> {{customer.address?.street}}</p>
+                <p [hidden]="!hiddenViewClientButton"><b>Teléfono:</b> {{customer.address?.phone}}</p>
+           <a [hidden]="!hiddenViewClientButton" [routerLink]="['/']"><button style="color: whitesmoke; background-color:rgb(70, 70, 134);" pButton pRipple type="button" label="Volver" class="p-button-raised"></button></a>
+          <a [hidden]="hiddenViewClientButton" [routerLink]="['/customers/'+ customer.id]"><button style="cursor: help; color: whitesmoke; background-color:rgb(70, 70, 134);" pButton pRipple type="button" label="Ver Cliente" class="p-button-raised"></button></a>
+                <br><br>
+          <a [hidden]="!hiddenViewClientButton" [routerLink]="['/editCliente/', customer.id]"><button style="color: whitesmoke; background-color: rgb(70, 70, 134);" pButton pRipple type="button" label="Editar Cliente" class="p-button-raised"></button></a>
+
          </div>
          </div>
        </div>

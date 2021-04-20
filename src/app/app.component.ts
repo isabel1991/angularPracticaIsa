@@ -32,7 +32,14 @@ export class AppComponent {
       label: '¿Quiénes somos?',
       icon: 'pi pi-fw pi-info-circle',
       routerLink: 'about',
+    },
+
+    {
+      label: 'Login',
+      icon: 'pi pi-fw pi-usercle',
+      routerLink: 'login',
     }
+
   ];
 
   capturaEvento(evento: any) {

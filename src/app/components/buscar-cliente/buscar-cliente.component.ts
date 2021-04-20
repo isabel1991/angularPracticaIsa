@@ -1,5 +1,6 @@
 import { isGeneratedFile } from '@angular/compiler/src/aot/util';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Client } from 'src/app/interfaces/client';
 import { ClientesServiceService } from 'src/app/services/clientes-service.service';
 
@@ -18,7 +19,12 @@ export class BuscarClienteComponent implements OnInit {
   loading=true;
    error= false;
 
-  constructor(private clienteService: ClientesServiceService) { }
+   hiddenViewClientButton=false;
+
+
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private clienteService: ClientesServiceService) { }
 
  async ngOnInit(): Promise<void>{
 
@@ -29,10 +35,15 @@ export class BuscarClienteComponent implements OnInit {
   async busqueda(){
 
       this.resultados = await this.clienteService.getCustomerByName(this.query);
+      this.hiddenViewClientButton=true;
+
       this.error=false;
       if(this.resultados.length==0) {
         this.resultados = await this.clienteService.getAllCustomers();
         if(this.query=='' || this.query==null){
+
+          this.hiddenViewClientButton=false;
+
           this.error=false;
 
         }else{
